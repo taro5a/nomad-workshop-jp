@@ -17,7 +17,7 @@ Docker Task Driverはその名の通り、Docker Imageを実行させるため�
 ```shell
 $ cd nomad-workshop
 $ export DIR=$(pwd)
-$ cat << EOF > mysql.nomad
+$ cat << EOF > mysql.nomad.hcl
 job "mysql-5.7" {
   datacenters = ["dc1"]
 
@@ -64,7 +64,7 @@ EOF
 それではMySQLを動かしてみましょう。
 
 ```shell
-$ nomad job run -hcl1 mysql.nomad
+$ nomad job run -hcl1 mysql.nomad.hcl
 ```
 
 しばらくするとDockerプロセスが立ち上がります。
@@ -127,7 +127,7 @@ mysql> show databases;
 
 ```shell
 $ nomad job stop mysql-5.7
-$ nomad job run -hcl1 mysql.nomad
+$ nomad job run -hcl1 mysql.nomad.hcl
 ```
 
 再度ログインして、データを参照してみます。
@@ -180,7 +180,7 @@ $ ./run.sh
 ```shell
 $ cd nomad-workshop
 $ sudo mkdir /var/lib/mysql
-$ cat << EOF > mysql.nomad
+$ cat << EOF > mysql.nomad.hcl
 job "mysql-5.7" {
   datacenters = ["dc1"]
 
@@ -236,7 +236,7 @@ EOF
 これを使ってMySQLを起動します。
 
 ```shell
-$ nomad job run -hcl1 mysql.nomad
+$ nomad job run -hcl1 mysql.nomad.hcl
 ``` 
 
 あとは同じようにデータを投入して再起動します。
@@ -257,7 +257,7 @@ Nomad Jobを再起動します。
 
 ```shell
 $ nomad job stop mysql-5.7
-$ nomad job run -hcl1 mysql.nomad
+$ nomad job run -hcl1 mysql.nomad.hcl
 ```
 
 再度ログインして、データを参照してみます。
