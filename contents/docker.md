@@ -76,14 +76,14 @@ $ nomad job run mysql.nomad.hcl
 ```console
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                                                   NAMES
-9072cdae373f        mysql:5.7.28        "docker-entrypoint.s…"   About an hour ago   Up About an hour    192.168.3.183:3306->3306/tcp, 192.168.3.183:3306->3306/udp, 33060/tcp   mysql-task-9752bf56-26bf-1f39-ae69-e53b654521c9
+9072cdae373f        mysql:9.0.1        "docker-entrypoint.s…"   About an hour ago   Up About an hour    192.168.3.183:3306->3306/tcp, 192.168.3.183:3306->3306/udp, 33060/tcp   mysql-task-9752bf56-26bf-1f39-ae69-e53b654521c9
 ```
 
 ```console
-$ nomad job status mysql-5.7
-ID            = mysql-5.7
-Name          = mysql-5.7
-Submit Date   = 2020-02-19T05:30:16Z
+$ nomad job status mysql-9
+ID            = mysql-9
+Name          = mysql-9
+Submit Date   = 2024-10-08T05:30:16Z
 Type          = service
 Priority      = 50
 Datacenters   = dc1
