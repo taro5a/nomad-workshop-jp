@@ -68,7 +68,7 @@ EOF
 それではMySQLを動かしてみましょう。
 
 ```shell
-$ nomad job run -hcl1 mysql.nomad.hcl
+$ nomad job run mysql.nomad.hcl
 ```
 
 しばらくするとDockerプロセスが立ち上がります。
