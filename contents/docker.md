@@ -18,38 +18,42 @@ Docker Task Driverはその名の通り、Docker Imageを実行させるため�
 $ cd nomad-workshop
 $ export DIR=$(pwd)
 $ cat << EOF > mysql.nomad.hcl
-job "mysql-5.7" {
+job "mysql-9" {
   datacenters = ["dc1"]
 
   type = "service"
 
   group "mysql-group" {
     count = 1
-    task "mysql-task" {
-      driver = "docker"
-      config {
-        image = "mysql:5.7.28"
-        port_map {
-          db = 3306
-        }
-      }
-      env {
-        "MYSQL_ROOT_PASSWORD" = "rooooot"
-      }
-      resources {
-        cpu    = 500
-        memory = 256
 
-        network {
-          mbits = 10
-          port "db" {
-            static = 3306
-          }
-        }
+    network {
+      port "db" {
+        static = 3306
       }
     }
+
+    task "mysql-task" {
+      driver = "docker"
+
+      config {
+        image = "mysql:9.0.1"
+        ports = ["db"]
+      }
+
+      env {
+        MYSQL_ROOT_PASSWORD = "roooot"
+      }
+
+      resources {
+        cpu    = 500
+        memory = 512
+
+      }
+    }
+
   }
 }
+
 EOF
 ```
 
